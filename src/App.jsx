@@ -10,6 +10,7 @@ import SectionFooter from "./components/SectionFooter";
 import SectionLink from "./components/sectionLink";
 import handleSectionScroll from "./helpers/handleSectionScroll";
 import changeText from "./helpers/changeText.jsx";
+import {Counter} from "./components/Counter.jsx";
 
 
 
@@ -34,6 +35,7 @@ function App() {
 
   return (
       <div>
+          <Counter />
         <SectionTop name={name} email={email} message={message}/>
         <SectionWork />
         <SectionAbout />

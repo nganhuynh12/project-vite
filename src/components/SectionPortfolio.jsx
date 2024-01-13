@@ -2,6 +2,7 @@ import React, {useRef} from 'react'
 import ComponentPortfolioItem from "./ComponentPortfolioItem";
 import {useTranslation} from "react-i18next";
 import {useState} from "react";
+import _ from 'lodash';
 
 const portfolioItem = [
     {
@@ -151,13 +152,14 @@ const portfolioItem = [
 
 function SectionPortfolio() {
     const { t} = useTranslation();
-
     const itemPage = 8
     const [displayItem, setDisplayItem] = useState(itemPage)
-    const allItemsPortfolio = portfolioItem.length
    function displayLoadMore() {
         setDisplayItem((prevState) => prevState + itemPage)
    }
+    function displayLoadLess() {
+        setDisplayItem((prevState) => prevState - itemPage)
+    }
 
     return (
         <div className="sectionPortfolio">
@@ -181,8 +183,17 @@ function SectionPortfolio() {
                     {t('Load More')}
                 </button>
             }
+            {
+                displayItem >= itemPage &&
+                <button className="sectionPortfolio__loadLess" onClick={displayLoadLess}>
+                    {t('Load Less')}
+                </button>
+            }
+
         </div>
+
     )
 }
+
 
 export default SectionPortfolio

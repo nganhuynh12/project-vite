@@ -9,6 +9,9 @@ import './index.css'
 import About from "./page/About";
 import i18n from "i18next";
 import {initReactI18next } from "react-i18next";
+import { store } from './store/store'
+import { Provider } from 'react-redux'
+import XoSo from "./page/XoSo.jsx";
 
 i18n
     .use(initReactI18next)
@@ -38,7 +41,7 @@ i18n
                     "CONTACT ME": "CONTACT ME",
                     "120 Old Walking Street": "120 Old Walking Street",
                     "Copyright 2018 Lavish Personal Profile . Designed by templatemo": "Copyright © 2018 Lavish Personal Profile . Designed by templatemo",
-                    "Your Name": "Your Nam",
+                    "Your Name": "Your Name",
                     "Your Email": "Your Email",
                     "Your Message": "Your Message",
                 }
@@ -90,10 +93,17 @@ const router = createBrowserRouter([
         path: "/about",
         element:  <About />,
     },
+
+    {
+        path: "/XoSo",
+        element:  <XoSo />,
+    },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
   </React.StrictMode>,
 )

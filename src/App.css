@@ -242,9 +242,9 @@ input[type="range"] {
 
 .sectionPortfolio__loadMore {
   position: absolute;
-  left: 50%;
+  left: 60%;
   bottom: 20px;
-  transform: translateX(-50%);
+  transform: translateX(-60%);
   padding: 6px 12px;
   font-size: 16px;
   font-weight: bold;
@@ -255,6 +255,25 @@ input[type="range"] {
 }
 
 .sectionPortfolio__loadMore:hover {
+  background-color: #D43F52;
+  border: none;
+}
+
+.sectionPortfolio__loadLess {
+  position: absolute;
+  left: 40%;
+  bottom: 20px;
+  transform: translateX(-40%);
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 180px;
+  height: 60px;
+  border: 2px solid #fff;
+  background-color: unset;
+}
+
+.sectionPortfolio__loadLess:hover {
   background-color: #D43F52;
   border: none;
 }
@@ -584,4 +603,36 @@ input[type="range"] {
   }
 
 }
+
+
+table, tr, td {
+  border: 1px solid white;
+}
+
+.table__xoSo{
+  display: flex;
+}
+
+table tr td span{
+  margin: 0 10px 0 0;
+}
+
+table tr td {
+  padding: 20px 0;
+  font-size: 20px;
+}
+
+.highlight-last-two-digits {
+  color: white;
+  padding: 10px;
+  background-color: #d43f52;
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+
+
+
 
