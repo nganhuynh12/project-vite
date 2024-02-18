@@ -109,8 +109,10 @@ function XoSo(){
             dv: []
         },
     ];
-    const [soDuocChon, setSoDuocChon] = useState(-1)
+    const [soDuocChon, setSoDuocChon] = useState([-1])
+    const [mainNum, setMainNum] = useState(-1)
     const [displayResult, setDisplayResult] = useState('');
+    const [clickType, setClickType] = useState('all')
 
     // const formatKetQua = (value) => {
     //     const soTimDuocDV = _.endsWith(`${value}`, `${soDuocChon}`, `${value}`.length)
@@ -127,18 +129,30 @@ function XoSo(){
     // }
 
     const formatKetQua = (value) => {
-        const soTimDuocDV = _.endsWith(`${value}`, `${soDuocChon}`, `${value}`.length);
-        const soTimDuocChuc = _.endsWith(`${value}`, `${soDuocChon}`, `${value}`.length - 1);
+        const soTimDuocDVMain = _.endsWith(`${value}`, `${mainNum}`, `${value}`.length);
+        const soTimDuocChucMain = _.endsWith(`${value}`, `${mainNum}`, `${value}`.length - 1);
+
+        const soTimDuocDV = soDuocChon.some(item => {
+            return _.endsWith(`${value}`, `${item}`, `${value}`.length);
+        }) && (clickType === 'dv' || clickType === 'all') && (soTimDuocDVMain || soTimDuocChucMain)
+
+        const soTimDuocChuc = soDuocChon.some(item => {
+            return _.endsWith(`${value}`, `${item}`, `${value}`.length - 1);
+        }) && (clickType === 'chuc' || clickType === 'all') && (soTimDuocDVMain || soTimDuocChucMain)
+
         let highlightLastTwoDigits = '';
         // const soDv = `${value}`.substring(`${value}`.length - 1);
         // const soChuc = `${value}`.substring(`${value}`.length - 2, `${value}`.length - 1);
 
-        if (!soTimDuocChuc && soTimDuocDV) {
-            highlightLastTwoDigits = 'highlight-chuc'
-        }
-        else if (soTimDuocChuc && !soTimDuocDV) {
+        if ((soTimDuocDV)) {
             highlightLastTwoDigits = 'highlight-dv'
         }
+
+        if ((soTimDuocChuc)) {
+            highlightLastTwoDigits = 'highlight-chuc'
+        }
+
+        console.log(soTimDuocChuc,soTimDuocDV,soDuocChon)
         return (
                 <span>
                     {`${value}`.substring(0, `${value}`.length - 2)}
@@ -147,7 +161,6 @@ function XoSo(){
                     </span>
                 </span>
             );
-
     };
 
     const checkResult = () => {
@@ -231,13 +244,29 @@ function XoSo(){
                         arrCheckNumber.map((item) => {
                             return (
                                 <tr>
-                                    <td onClick={() => setSoDuocChon(item.value)}>
+                                    <td onClick={() =>
+                                    {
+                                        setSoDuocChon(item.chuc)
+                                        setClickType('chuc')
+                                        setMainNum(item.value)
+                                        console.log(item.chuc)
+
+                                    }} >
                                         {
                                             item.chuc.join(', ')
                                         }
                                     </td>
-                                    <td onClick={() => setSoDuocChon(item.value)}>{item.value}</td>
-                                    <td onClick={() => setSoDuocChon(item.value)}>
+                                    <td onClick={() => {
+                                        setSoDuocChon([item.value])
+                                        setClickType('all')
+                                        setMainNum(item.value)
+                                    }}>{item.value}</td>
+                                    <td onClick={() => {
+                                        setSoDuocChon(item.dv)
+                                        setClickType('dv')
+                                        console.log(item.dv)
+                                        setMainNum(item.value)
+                                    }}>
                                         {
                                             item.dv.join(', ')
                                         }
