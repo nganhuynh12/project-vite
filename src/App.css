@@ -622,17 +622,25 @@ table tr td {
   font-size: 20px;
 }
 
-.highlight-last-two-digits {
+.highlight-dv{
   color: white;
   padding: 10px;
-  background-color: #d43f52;
+  background-color: #5e5ee1;
   border-radius: 50%;
   font-size: 30px;
   font-weight: bold;
   display: inline-block;
 }
 
-
+.highlight-chuc{
+  color: white;
+  padding: 10px;
+  background-color: #48b948;
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: bold;
+  display: inline-block;
+}
 
 
 

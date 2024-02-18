@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import _ from 'lodash'
 
 function XoSo(){
@@ -111,19 +111,44 @@ function XoSo(){
     ];
     const [soDuocChon, setSoDuocChon] = useState(-1)
     const [displayResult, setDisplayResult] = useState('');
+
+    // const formatKetQua = (value) => {
+    //     const soTimDuocDV = _.endsWith(`${value}`, `${soDuocChon}`, `${value}`.length)
+    //     const soTimDuocChuc = _.endsWith(`${value}`, `${soDuocChon}`, `${value}`.length - 1)
+    //     const highlightLastTwoDigits = soTimDuocDV || soTimDuocChuc;
+    //     return (
+    //         <span>
+    //             {`${value}`.substring(0, `${value}`.length - 2)}
+    //             <span className={highlightLastTwoDigits ? 'highlight-last-two-digits' : ''}>
+    //                 {`${value}`.substring(`${value}`.length - 2)}
+    //             </span>
+    //         </span>
+    //     );
+    // }
+
     const formatKetQua = (value) => {
-        const soTimDuocDV = _.endsWith(`${value}`, `${soDuocChon}`, `${value}`.length)
-        const soTimDuocChuc = _.endsWith(`${value}`, `${soDuocChon}`, `${value}`.length - 1)
-        const highlightLastTwoDigits = soTimDuocDV || soTimDuocChuc;
+        const soTimDuocDV = _.endsWith(`${value}`, `${soDuocChon}`, `${value}`.length);
+        const soTimDuocChuc = _.endsWith(`${value}`, `${soDuocChon}`, `${value}`.length - 1);
+        let highlightLastTwoDigits = '';
+        // const soDv = `${value}`.substring(`${value}`.length - 1);
+        // const soChuc = `${value}`.substring(`${value}`.length - 2, `${value}`.length - 1);
+
+        if (!soTimDuocChuc && soTimDuocDV) {
+            highlightLastTwoDigits = 'highlight-chuc'
+        }
+        else if (soTimDuocChuc && !soTimDuocDV) {
+            highlightLastTwoDigits = 'highlight-dv'
+        }
         return (
-            <span>
-                {`${value}`.substring(0, `${value}`.length - 2)}
-                <span className={highlightLastTwoDigits ? 'highlight-last-two-digits' : ''}>
-                    {`${value}`.substring(`${value}`.length - 2)}
+                <span>
+                    {`${value}`.substring(0, `${value}`.length - 2)}
+                    <span className={highlightLastTwoDigits}>
+                        {`${value}`.substring(`${value}`.length - 2)}
+                    </span>
                 </span>
-            </span>
-        );
-    }
+            );
+
+    };
 
     const checkResult = () => {
         const inputElements = document.getElementsByClassName('input');
@@ -206,13 +231,13 @@ function XoSo(){
                         arrCheckNumber.map((item) => {
                             return (
                                 <tr>
-                                    <td>
+                                    <td onClick={() => setSoDuocChon(item.value)}>
                                         {
                                             item.chuc.join(', ')
                                         }
                                     </td>
                                     <td onClick={() => setSoDuocChon(item.value)}>{item.value}</td>
-                                    <td>
+                                    <td onClick={() => setSoDuocChon(item.value)}>
                                         {
                                             item.dv.join(', ')
                                         }
