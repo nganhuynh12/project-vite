@@ -2,7 +2,6 @@ body {
   place-items: flex-start;
 }
 
-
 .sectionTop {
   background-image: url("/image7.jpeg");
   background-size: cover;
@@ -85,7 +84,7 @@ body {
   font-weight: bold;
 }
 
-.sectionWork__body{
+.sectionWork__body {
   display: flex;
 
 }
@@ -104,7 +103,7 @@ body {
 }
 
 .sectionWork__icon {
-  border: 2px solid  #ffffff;
+  border: 2px solid #ffffff;
   border-radius: 50%;
   width: 120px;
   height: 50px;
@@ -135,7 +134,7 @@ input[type="range"] {
   accent-color: #D43F52;
 }
 
-.sectionAbout{
+.sectionAbout {
   width: 100%;
   background-color: #000;
   display: flex;
@@ -144,7 +143,7 @@ input[type="range"] {
   padding: 100px 0;
 }
 
-.sectionAbout__content1{
+.sectionAbout__content1 {
   width: 50%;
   margin-left: 150px;
   margin-right: 50px;
@@ -164,7 +163,7 @@ input[type="range"] {
   margin-right: 150px;
 }
 
-.sectionAbout__cover{
+.sectionAbout__cover {
   padding-bottom: 20px;
 }
 
@@ -218,6 +217,7 @@ input[type="range"] {
   opacity: 0;
   transition: all 0.3s;
 }
+
 .sectionPortfolio__photo__name {
   text-align: center;
   padding-top: 50px;
@@ -231,6 +231,7 @@ input[type="range"] {
   font-size: 14px;
   font-weight: bold;
 }
+
 .sectionPortfolio__photo:hover .sectionPortfolio__photo__hover {
   opacity: 0.9;
   transform: translate(-50%, -50%)
@@ -318,12 +319,14 @@ input[type="range"] {
   font-size: 16px;
 }
 
-.sectionContact__content2{
+.sectionContact__content2 {
   width: 50%;
   margin-right: 150px;
 }
 
-.sectionContact__name, .sectionContact__email, .sectionContact__message {
+.sectionContact__name,
+.sectionContact__email,
+.sectionContact__message {
   display: block;
   width: 100%;
   background-color: unset;
@@ -331,7 +334,9 @@ input[type="range"] {
   margin-bottom: 30px;
 }
 
-.sectionContact__name::placeholder, .sectionContact__email::placeholder, .sectionContact__message::placeholder{
+.sectionContact__name::placeholder,
+.sectionContact__email::placeholder,
+.sectionContact__message::placeholder {
   padding-left: 10px;
 }
 
@@ -373,12 +378,12 @@ input[type="range"] {
   padding-top: 100px;
 }
 
-.sectionFooter__icon a{
+.sectionFooter__icon a {
   padding: 0 5px;
   color: #999999;
 }
 
-.sectionLink{
+.sectionLink {
   width: 100px;
   height: 100px;
   float: right;
@@ -396,20 +401,20 @@ input[type="range"] {
   margin-bottom: 12px;
 }
 
-.sectionLink__link1:hover{
+.sectionLink__link1:hover {
   width: 10px;
   height: 10px;
 }
 
-.active{
+.active {
   width: 15px;
   height: 15px;
 }
 
 
-@media screen and (max-width: 375px){
+@media screen and (max-width: 375px) {
 
-  .sectionTop h3{
+  .sectionTop h3 {
     font-size: 50px;
   }
 
@@ -463,11 +468,11 @@ input[type="range"] {
     font-size: 30px;
   }
 
-  .sectionAbout{
+  .sectionAbout {
     display: block;
   }
 
-  .sectionAbout__content1{
+  .sectionAbout__content1 {
     width: 100%;
     margin-left: 0;
     margin-right: 0;
@@ -554,7 +559,7 @@ input[type="range"] {
     font-size: 35px;
   }
 
-  .sectionContact__content2{
+  .sectionContact__content2 {
     width: 80%;
     margin-right: 0;
     margin-left: 24px;
@@ -577,7 +582,9 @@ input[type="range"] {
     font-size: 30px;
   }
 
-  .sectionContact__name, .sectionContact__email, .sectionContact__message {
+  .sectionContact__name,
+  .sectionContact__email,
+  .sectionContact__message {
     font-size: 25px;
   }
 
@@ -592,12 +599,12 @@ input[type="range"] {
 
   }
 
-  .sectionLink__link1:hover{
+  .sectionLink__link1:hover {
     width: 30px;
     height: 30px;
   }
 
-  .active{
+  .active {
     width: 35px;
     height: 35px;
   }
@@ -605,15 +612,22 @@ input[type="range"] {
 }
 
 
-table, tr, td {
-  border: 1px solid white;
+table,
+tr,
+td {
+  border: 1px solid black;
+  color: black
 }
 
-.table__xoSo{
+.table__xoSo {
   display: flex;
 }
 
-table tr td span{
+.table__xoSo2 {
+  display: flex;
+}
+
+table tr td span {
   margin: 0 10px 0 0;
 }
 
@@ -622,35 +636,24 @@ table tr td {
   font-size: 20px;
 }
 
-.highlight-dv{
-  color: white;
-  padding: 10px;
-  background-color: #5e5ee1;
-  border-radius: 50%;
-  font-size: 30px;
+
+.highlight-dv {
+  color: #5e5ee1;
+  font-size: 40px;
   font-weight: bold;
-  display: inline-block;
+
 }
 
-.highlight-chuc{
-  color: white;
-  padding: 10px;
-  background-color: #48b948;
-  border-radius: 50%;
-  font-size: 30px;
+.highlight-chuc {
+  color: #48b948;
+  font-size: 40px;
   font-weight: bold;
-  display: inline-block;
+
 }
 
-.highlight-all{
-  color: white;
-  padding: 10px;
-  background-color: deeppink;
-  border-radius: 50%;
-  font-size: 30px;
+.highlight-all {
+  color: deeppink;
+  font-size: 40px;
   font-weight: bold;
-  display: inline-block;
+
 }
-
-
-

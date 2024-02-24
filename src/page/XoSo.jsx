@@ -1,5 +1,7 @@
 import React, { useState} from "react";
 import _ from 'lodash'
+import LayoutXoSo from "../components/LayoutXoSo"
+
 
 function XoSo(){
     const arr = [
@@ -114,19 +116,6 @@ function XoSo(){
     const [displayResult, setDisplayResult] = useState('');
     const [clickType, setClickType] = useState('all')
 
-    // const formatKetQua = (value) => {
-    //     const soTimDuocDV = _.endsWith(`${value}`, `${soDuocChon}`, `${value}`.length)
-    //     const soTimDuocChuc = _.endsWith(`${value}`, `${soDuocChon}`, `${value}`.length - 1)
-    //     const highlightLastTwoDigits = soTimDuocDV || soTimDuocChuc;
-    //     return (
-    //         <span>
-    //             {`${value}`.substring(0, `${value}`.length - 2)}
-    //             <span className={highlightLastTwoDigits ? 'highlight-last-two-digits' : ''}>
-    //                 {`${value}`.substring(`${value}`.length - 2)}
-    //             </span>
-    //         </span>
-    //     );
-    // }
 
     const formatKetQua = (value) => {
         const soTimDuocDVMain = _.endsWith(`${value}`, `${mainNum}`, `${value}`.length);
@@ -209,80 +198,85 @@ function XoSo(){
     })
 
     return(
-        <div>
-            <div className="table__xoSo">
-                <table>
-                    <tr>
-                        <td>Thu ba Ngay 09/01/2024</td>
-                        <td>XSVT Loai ve: 1B</td>
-                    </tr>
-                    {
-                        arr.map((item) => {
-                            return (
-                                <tr>
-                                    <td>{item.tenGiai}</td>
-                                    <td>{item.ketQua.map((number) => {
-                                        {
-                                            return (
-                                                <span>{formatKetQua(number)}</span>
-                                            )
-                                        }
-                                    })}</td>
-                                </tr>
-                            )
-                        })
-                    }
-                </table>
-
-                <table>
-                    <tr>
-                        <td>Chuc</td>
-                        <td>So</td>
-                        <td>D.Vi</td>
-                    </tr>
-                    {
-                        arrCheckNumber.map((item) => {
-                            return (
-                                <tr>
-                                    <td onClick={() =>
-                                    {
-                                        setSoDuocChon(item.chuc)
-                                        setClickType('chuc')
-                                        setMainNum(item.value)
-                                        console.log(item.chuc)
-
-                                    }} >
-                                        {
-                                            item.chuc.join(', ')
-                                        }
-                                    </td>
-                                    <td onClick={() => {
-                                        setSoDuocChon([item.value])
-                                        setClickType('all')
-                                        setMainNum(item.value)
-                                    }}>{item.value}</td>
-                                    <td onClick={() => {
-                                        setSoDuocChon(item.dv)
-                                        setClickType('dv')
-                                        console.log(item.dv)
-                                        setMainNum(item.value)
-                                    }}>
-                                        {
-                                            item.dv.join(', ')
-                                        }
-                                    </td>
-                                </tr>
-                            )
-                        })
-                    }
-                </table>
-            </div>
+        <LayoutXoSo content = {
             <div>
-                <h1 className="display">{displayResult}</h1>
-                <input className="input"/>
-                <button onClick={checkResult}>Gui</button>
+                <div className="table__xoSo">
+                    <table>
+                        <tr>
+                            <td>Thu ba Ngay 09/01/2024</td>
+                            <td>XSVT Loai ve: 1B</td>
+                        </tr>
+                        {
+                            arr.map((item) => {
+                                return (
+                                    <tr>
+                                        <td>{item.tenGiai}</td>
+                                        <td>{item.ketQua.map((number) => {
+                                            {
+                                                return (
+                                                    <span>{formatKetQua(number)}</span>
+                                                )
+                                            }
+                                        })}</td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </table>
+
+
+                    <table>
+                        <tr>
+                            <td>Chuc</td>
+                            <td>So</td>
+                            <td>D.Vi</td>
+                        </tr>
+                        {
+                            arrCheckNumber.map((item) => {
+                                return (
+                                    <tr>
+                                        <td onClick={() =>
+                                        {
+                                            setSoDuocChon(item.chuc)
+                                            setClickType('chuc')
+                                            setMainNum(item.value)
+
+                                        }} >
+                                            {
+                                                item.chuc.join(', ')
+                                            }
+                                        </td>
+                                        <td onClick={() => {
+                                            setSoDuocChon([item.value])
+                                            setClickType('all')
+                                            setMainNum(item.value)
+                                        }}>{item.value}</td>
+                                        <td onClick={() => {
+                                            setSoDuocChon(item.dv)
+                                            setClickType('dv')
+                                            console.log(item.dv)
+                                            setMainNum(item.value)
+                                        }}>
+                                            {
+                                                item.dv.join(', ')
+                                            }
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </table>
+                
+                </div>
+                <div>
+                    <h1 className="display">{displayResult}</h1>
+                    <input className="input"/>
+                    <button onClick={checkResult}>Gui</button>
+                </div>
             </div>
-        </div>
+        }>
+           
+        </LayoutXoSo>
     )
 }
 export default XoSo
